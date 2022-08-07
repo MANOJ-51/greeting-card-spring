@@ -1,10 +1,10 @@
-package com.bridgelabz.greetingcardspring.dto;
+package com.bridgelabz.greetingcardspring.model;
 
-public class GreetingDTO {
+public class GreetingModel {
     private long id;
     private String message;
 
-    public GreetingDTO(long id, String message) {
+    public GreetingModel(long id, String message) {
         this.id = id;
         this.message = message;
     }

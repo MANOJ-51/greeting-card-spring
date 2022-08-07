@@ -1,8 +1,12 @@
 package com.bridgelabz.greetingcardspring.service;
 
-import com.bridgelabz.greetingcardspring.dto.GreetingDTO;
-import org.springframework.web.bind.annotation.RequestParam;
+import com.bridgelabz.greetingcardspring.model.GreetingModel;
+
 
 public interface IGreetingService {
-    GreetingDTO greetingMessage();
+    GreetingModel greetingMessage();
+
+    GreetingModel greetingMessage(String name);
+
+    GreetingModel greetingMessage(String firstName, String lastName);
 }
