@@ -20,7 +20,7 @@ public class GreetingController {
 
     @RequestMapping(value = {"", "/", "/greetParam"}, method = RequestMethod.GET)
     public GreetingModel greetCardParam(@RequestParam(value = "name", defaultValue = "world") String name) {
-        return new GreetingModel(COUNTER.incrementAndGet(), String.format(TEMPLATE_1, name));
+        return iGreetingService.greetingMessage(name);
     }
 
     @RequestMapping(value = {"", "/", "/greetCard"}, method = RequestMethod.GET)
