@@ -1,18 +1,20 @@
 package com.bridgelabz.greetingcardspring.controller;
 
 import com.bridgelabz.greetingcardspring.dto.GreetingDTO;
+import com.bridgelabz.greetingcardspring.service.GreetingServices;
+import com.bridgelabz.greetingcardspring.service.IGreetingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
 @RequestMapping("/welcome")
 public class GreetingController {
-    private static final String TEMPLATE = "Hello,%s";
-    private static final AtomicLong counter = new AtomicLong();
+    @Autowired
+    IGreetingService iGreetingService;
 
     @RequestMapping(value = {"", "/", "/home"}, method = RequestMethod.GET)
-    public GreetingDTO greetCard(@RequestParam(value = "name", defaultValue = "world") String name) {
-        return new GreetingDTO(counter.incrementAndGet(), String.format(TEMPLATE, name));
+    public GreetingDTO greetCard() {
+        return iGreetingService.greetingMessage();
     }
 }
