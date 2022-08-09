@@ -9,4 +9,6 @@ public interface IGreetingService {
     GreetingModel greetingMessage(String name);
 
     GreetingModel greetingMessage(String firstName, String lastName);
+
+    GreetingModel getGreetingById(Long id);
 }

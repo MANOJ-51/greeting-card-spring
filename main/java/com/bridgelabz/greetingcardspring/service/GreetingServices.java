@@ -6,8 +6,8 @@ import com.bridgelabz.greetingcardspring.repository.IGreetingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import static com.bridgelabz.greetingcardspring.controller.GreetingController.TEMPLATE_1;
-import static com.bridgelabz.greetingcardspring.controller.GreetingController.TEMPLATE_2;
+import java.util.Optional;
+
 
 @Service
 public class GreetingServices implements IGreetingService {
@@ -28,5 +28,15 @@ public class GreetingServices implements IGreetingService {
     @Override
     public GreetingModel greetingMessage(String firstName, String lastName) {
         return iGreetingRepository.save(new GreetingModel(String.format(GreetingController.TEMPLATE_2, firstName, lastName)));
+    }
+
+    @Override
+    public GreetingModel getGreetingById(Long id) {
+        Optional<GreetingModel> greetingModel = iGreetingRepository.findById(id);
+        if (greetingModel.isPresent()) {
+            return greetingModel.get();
+        } else {
+            return (new GreetingModel("Greeting Message is not there"));
+        }
     }
 }

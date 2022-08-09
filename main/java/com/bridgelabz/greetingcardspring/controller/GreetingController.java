@@ -23,12 +23,12 @@ public class GreetingController {
         return iGreetingService.greetingMessage(name);
     }
 
-    @RequestMapping(value = {"", "/", "/greetCard"}, method = RequestMethod.GET)
+    @GetMapping ("/greetCard")
     public GreetingModel greetCard() {
         return iGreetingService.greetingMessage();
     }
 
-    @PostMapping("/post")
+    @PostMapping("/userData")
     public GreetingModel sayHello(@RequestBody UserDTO userDTO) {
         if (userDTO.getFirstName() == null && userDTO.getLastName() == null) {
             return iGreetingService.greetingMessage();
@@ -39,5 +39,9 @@ public class GreetingController {
         } else {
             return iGreetingService.greetingMessage(userDTO.getFirstName(), userDTO.getLastName());
         }
+    }
+    @GetMapping("getGreeting/{id}")
+    public GreetingModel getGreetingMessage(@PathVariable Long id){
+        return iGreetingService.getGreetingById(id);
     }
 }
