@@ -55,4 +55,15 @@ public class GreetingServices implements IGreetingService {
             return (new GreetingModel("Greeting is Not Found in the Repository"));
         }
     }
+
+    @Override
+    public GreetingModel deleteGreetingById(Long id) {
+        Optional<GreetingModel>greetingModelOptional=iGreetingRepository.findById(id);
+        if (greetingModelOptional.isPresent()){
+            iGreetingRepository.deleteById(id);
+            return greetingModelOptional.get();
+        }else {
+            return(new GreetingModel("NO Greeting Found "));
+        }
+    }
 }

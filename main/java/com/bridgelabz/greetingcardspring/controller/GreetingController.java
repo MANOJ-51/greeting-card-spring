@@ -55,4 +55,9 @@ public class GreetingController {
     public GreetingModel editGreetingMessage(@RequestBody GreetingModel greetingModel){
         return iGreetingService.editGreeting(greetingModel);
     }
+
+    @DeleteMapping("deleteGreeting/{id}")
+    public GreetingModel deleteGreeting(@PathVariable Long id){
+        return iGreetingService.deleteGreetingById(id);
+    }
 }
