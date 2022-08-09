@@ -50,4 +50,9 @@ public class GreetingController {
     public List<GreetingModel> getList(){
         return iGreetingService.getGreetingList();
     }
+
+    @PutMapping("update")
+    public GreetingModel editGreetingMessage(@RequestBody GreetingModel greetingModel){
+        return iGreetingService.editGreeting(greetingModel);
+    }
 }

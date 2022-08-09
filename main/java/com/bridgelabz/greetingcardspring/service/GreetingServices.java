@@ -45,4 +45,14 @@ public class GreetingServices implements IGreetingService {
     public List<GreetingModel> getGreetingList() {
         return (List<GreetingModel>)iGreetingRepository.findAll();
     }
+
+    @Override
+    public GreetingModel editGreeting(GreetingModel greetingModel) {
+        Optional<GreetingModel>greetingModelOptional=iGreetingRepository.findById(greetingModel.getId());
+        if (greetingModelOptional.isPresent()){
+            return iGreetingRepository.save(greetingModel);
+        }else {
+            return (new GreetingModel("Greeting is Not Found in the Repository"));
+        }
+    }
 }
