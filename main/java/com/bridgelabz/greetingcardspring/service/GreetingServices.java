@@ -6,6 +6,7 @@ import com.bridgelabz.greetingcardspring.repository.IGreetingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -38,5 +39,10 @@ public class GreetingServices implements IGreetingService {
         } else {
             return (new GreetingModel("Greeting Message is not there"));
         }
+    }
+
+    @Override
+    public List<GreetingModel> getGreetingList() {
+        return (List<GreetingModel>)iGreetingRepository.findAll();
     }
 }
